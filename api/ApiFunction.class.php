@@ -22,7 +22,7 @@
          */
         final public function execute()
         {
-            require_once 'curl/SugarCurlRequest.class.php';
+            require_once dirname(dirname(__FILE__)).'/curl/SugarCurlRequest.class.php';
             
             $curl = new Curl_SugarCurlRequest();
             
@@ -34,7 +34,7 @@
             }
             
             // Encode the parameter array 
-            $data = self::_encode($this->_parameters);
+            $data = self::_encode($parameters);
             
             // Use the class name to build the API function name
             $name = self::_buildApiFunctionName(get_class($this));
