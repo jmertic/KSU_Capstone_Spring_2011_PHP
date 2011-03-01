@@ -73,7 +73,7 @@
             }
             
             if (empty($this->_query)) {
-                $this->_query    =    '';
+                $this->_query = '';
             }
             
             $parameters = array(
