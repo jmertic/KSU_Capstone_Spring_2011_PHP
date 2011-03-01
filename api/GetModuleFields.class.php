@@ -1,5 +1,5 @@
 <?php
-    require_once 'api/ApiFunction.class.php';
+    require_once 'ApiFunction.class.php';
     
     class Api_GetModuleFields extends Api_ApiFunction
     {
