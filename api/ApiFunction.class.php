@@ -5,7 +5,7 @@
      * @author Carl Weybrecht <cweybrec@cs.kent.edu>
      * @package api
      */
-    abstract class Api_ApiFucntion
+    abstract class Api_ApiFunction
     {
         /**
          * Constructor
