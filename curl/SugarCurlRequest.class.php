@@ -1,5 +1,5 @@
 <?php
-    require_once 'curl/CurlRequest.class.php';
+    require_once 'CurlRequest.class.php';
     
     /**
      * Provides Sugar-specific logic for cURL requests
@@ -33,7 +33,7 @@
         {
             parent::__construct();
             
-            require_once 'Config.class.php';
+            require_once dirname(dirname(__FILE__)).'/Config.class.php';
             
             $config = new Config();
             
