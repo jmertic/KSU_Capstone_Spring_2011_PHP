@@ -26,6 +26,7 @@
          * 
          * @param string $username
          * @param string $password
+         * @return string
          */
         final public function login($username = '', $password = '')
         {
@@ -69,6 +70,7 @@
          * @param string $offset
          * @param array $select_fields
          * @param array $link_name_to_fields_array
+         * @return object
          */
         final public function get_entry_list($module_name, $query = '', $order_by = '', $offset = '', $select_fields = array(), $link_name_to_fields_array = array())
         {
