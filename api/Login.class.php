@@ -81,7 +81,15 @@
          */
         protected function buildParameters()
         {
-            return array(
+            if (empty($this->_username)) {
+            	throw new Exception('Username not set');
+            }
+            
+            if (empty($this->_password)) {
+            	throw new Exception('Password not set');
+            }
+        	
+        	return array(
                 'user_auth' => array(
                     'user_name' => $this->_username,
                     'password' => self::_passwordHash($this->_password),
