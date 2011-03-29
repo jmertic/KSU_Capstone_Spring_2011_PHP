@@ -122,9 +122,9 @@
             }
 
             $parameters = array(
-                'session' => '$this->_sessionId',
-                'module_name' => '$this->_moduleName',
-                'id' => '$this->_id',
+                'session' => $this->_sessionId,
+                'module_name' => $this->_moduleName,
+                'id' => $this->_id,
             );
 
             if(!empty($this->_selectFields)){
