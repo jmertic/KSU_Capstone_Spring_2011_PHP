@@ -26,7 +26,6 @@
         private $_searchString;
 
         /**
-         *
          * Module Names
          *
          * @var string
