@@ -88,9 +88,9 @@
             }
 
             $parameters = array(
-                'session' => '$this->_sessionId',
-                'document_revision' => '$this->_documentRevision',
-                'id' => '$this->_documentId',
+                'session' => $this->_sessionId,
+                'document_revision' => $this->_documentRevision,
+                'id' => $this->_documentId,
             );
 
             return $parameters;
