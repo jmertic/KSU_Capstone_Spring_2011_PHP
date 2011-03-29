@@ -22,11 +22,14 @@
 			$this->_sessionId = $session_id;
 		}
 		
-		protected  function buildParameters()
+		protected function buildParameters()
 		{
-			return array(
-				'session' => $this->_sessionId,
-			);
+			if (empty($this->_sessionId)) {
+            	throw new Exception('Session ID not set');
+            }
+
+         return $parameters;
+            
 		}
 }
 ?>
