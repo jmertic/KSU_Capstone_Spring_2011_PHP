@@ -112,21 +112,20 @@
             if(empty($this->_sessionId)){
                 throw new Exception('Session ID not set');
             }
-            
+
             if(empty($this->_moduleNames)){
                 throw new Exception('Module Names not set');
             }
-            
+                                                                                        
             if(empty($this->_ids)){       
-                throw new Exception('IDs not set');
-            }
-            
+                throw new Exception('IDs not set')
+            }                                                                                                   
             $parameters = array(
                 'session' => $this->_sessionId,
                 'module_name' => $this->_moduleName,
                 'ids' => $this->_ids,
             );
-            
+
             if(!empty($this->_selectFields)){
                 $parameters['select_fields'] = $this->_selectFields;
             }
@@ -134,7 +133,7 @@
             if(!empty($this->_linkNameToFields)){
                 $parameters['link_name_to_fields_array'] = $this->_linkNameToFields;
             }
-            
+
             return $parameters;
         }
     }
