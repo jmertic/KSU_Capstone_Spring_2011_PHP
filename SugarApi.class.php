@@ -93,6 +93,7 @@
 
         /**
          * Retrieve a single SugarBean based on ID
+         *
          * @param string $module_name
          * @param string $query
          * @param string $id
@@ -100,7 +101,7 @@
          * @param array $link_name_to_fields_array
          * @return object
          */
-        final public function get_entry($moduel_name, $query = '', $id = '', $select_fields = array(), $link_name_to_fields_array = array())
+        final public function get_entry($module_name, $query = '', $id = '', $select_fields = array(), $link_name_to_fields_array = array())
         {
             require_once 'api/GetEntry.class.php';
 
@@ -117,6 +118,7 @@
 
         /**
          * Retrieve a list of SugarBeans based on IDs
+         *
          * @param string $module_name
          * @param string $query
          * @param array $ids
@@ -141,6 +143,7 @@
 
         /**
          * Returns the ID, module name and fields for specified modules
+         *
          * @param string $search_string
          * @param string $modules
          * @param integer $offset
@@ -164,6 +167,7 @@
 
         /**
          * Sets a new revision for a document
+         *
          * @param string $document_revision
          * @param string $id
          * @ return object
@@ -184,6 +188,7 @@
         /**
          * In case of .htaccess lock-down on the cache directory,
          * allows an authenticated user with the appropriate permissions to download a document
+         *
          * @param string $id
          * @return object
          */
