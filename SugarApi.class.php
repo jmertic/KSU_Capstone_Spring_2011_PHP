@@ -126,7 +126,7 @@
          * @param array $link_name_to_fields_array
          * @return object
          */
-        final public function get_entries($moduel_name, $query = '', $ids = array(), $select_fields = array(), $link_name_to_fields_array = array())
+        final public function get_entries($module_name, $query = '', $ids = array(), $select_fields = array(), $link_name_to_fields_array = array())
         {
             require_once 'api/GetEntries.class.php';
 
