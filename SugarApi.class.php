@@ -203,5 +203,103 @@
             
             return $document->execute();
         }
+        
+        /**
+         * Retrieves the specified number of records in a module.
+         *
+         * @param string $module_name
+         * @param string $query
+         * @param integer $deleted
+         * @return object
+         */
+        final public function get_entries_count($module_name, $query, $deleted)
+        {
+			require_once 'api/GetEntriesCount.class.php';
+			
+			$entries_count = new Api_GetEntriesCount();
+			
+			$entries_count->setSessionId($this->_session_id);
+			$entries_count->setModuleName($module_name);
+			$entries_count->setQuery($query);
+			$entries_count->setDeleted($deleted);
+			
+			return $entries_count->execute();
+        }
+        
+        /**
+         * Sets multiple relationships between two SugarBeans.
+         *
+         * @param array $module_names
+         * @param array $module_ids
+         * @param array $link_field_names
+         * @param array $related_id
+         * @return object
+         */
+   		final public function set_relationships($module_names = array(), $module_ids = array(), $link_field_names = array(), $related_id = array())
+        {
+			require_once 'api/SetRelationships.class.php';
+			
+			$set_relationships = new Api_SetRelationships();
+			
+			$set_relationships->setSessionId($this->_session_id);
+			$set_relationships->setModuleNames($module_names);
+			$set_relationships->setModuleIds($module_ids);
+			$set_relationships->setLinkFieldNames($link_field_names);
+			$set_relationships->setRelatedId($related_id);
+			
+			return $set_relationships->execute();
+        }
+        
+        /**
+         * Creates or updates a list of SugarBeans.
+         *
+         * @param string $module_name
+         * @param array $name_value_lists
+         * @return object
+         */
+       	final public function set_entries($module_name, $name_value_lists = array())
+        {
+			require_once 'api/SetEntries.class.php';
+			
+			$set_entries = new Api_SetEntries();
+			
+			$set_entries->setSessionId($this->_session_id);
+			$set_entries->setModuleName($module_name);
+			$set_entries->setNameValueList($name_value_lists);
+			
+			return $set_entries->execute();
+        }
+        
+        /**
+         * Retrieves a collection of beans that are related to the specified bean and, optionally, returns relationship data.
+         *
+         * @param string $module_name
+         * @param string $module_ids
+         * @param string $link_field_name
+         * @param string $related_module_query
+         * @param array $related_fields
+         * @param array $related_module_link_name_to_fields_array
+         * @param integer $deleted
+         * @return object
+         */
+		final public function get_relationship($module_name, $module_name, $module_ids,  $link_field_name, $related_module_query,
+		 $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
+        {
+			require_once 'api/SetEntries.class.php';
+			
+			$get_relationship = new Api_GetRelationship();
+			
+			$get_relationship->setSessionId($this->_session_id);
+			$get_relationship->setModuleName($module_name);
+			$get_relationship->setModuleIds($module_ids);
+			$get_relationship->setLinkFieldName($link_field_name);
+			$get_relationship->setRelatedModuleQuery($related_module_query);
+			$get_relationship->setRelatedFields($related_fields);
+			$get_relationship->setRelatedModuleLinkNameToFieldsArray($related_module_link_name_to_fields_array);
+			$get_relationship->setDeleted($deleted);
+			
+			return $get_relationship->execute();
+        }
+        
     }
 ?>
