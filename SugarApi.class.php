@@ -285,7 +285,7 @@
 		final public function get_relationship($module_name, $module_name, $module_ids,  $link_field_name, $related_module_query,
 		 $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
         {
-			require_once 'api/SetEntries.class.php';
+			require_once 'api/GetRelationship.class.php';
 			
 			$get_relationship = new Api_GetRelationship();
 			
