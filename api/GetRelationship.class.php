@@ -123,7 +123,7 @@ class Api_GetRelationship extends Api_ApiFunction
          */
 	public function setRelatedModuleQuery($related_module_query)
 	{
-		$this->_relatedModuleQuery = $module_ids;
+		$this->_relatedModuleQuery = $related_module_query;
 	}
 	
         /**
