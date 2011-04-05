@@ -27,12 +27,22 @@
         {
             // Do nothing
         }
-         
+        
+        /**
+         * Check if curl object is set
+         *
+         * return bool
+         */ 
         private function _isCurlSet()
         {
             return !empty($this->_curl);
         }
         
+        /**
+         * Set the Curl object
+         *
+         * @param object $curl
+         */
         final public function setCurlObject($curl)
         {
             $this->_curl = $curl;
