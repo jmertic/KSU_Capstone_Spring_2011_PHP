@@ -1,7 +1,7 @@
-//author Yousef Guzaiz  <yguzaiz@cs.kent.edu>
-
 <?php
-    require_once 'ApiFunction.class.php';
+   //author Yousef Guzaiz  <yguzaiz@cs.kent.edu>
+ require_once 'ApiFunction.class.php';
+
 
 class Api_GetServerInfo  extends Api_ApiFunction
 {
@@ -24,4 +24,3 @@ protected function buildParameters()
         }
   }
 ?>
-                                 
