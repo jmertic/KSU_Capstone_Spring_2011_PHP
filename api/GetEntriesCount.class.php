@@ -105,7 +105,7 @@ class Api_GetEntriesCount extends Api_ApiFunction
 			$this->_query = '';
 		}
 		if (empty($this->_deleted)) {
-			throw new Exception('Deleted not set');
+			$this->_deleted = '0';
 		}
             
 		return array(
