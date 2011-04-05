@@ -218,7 +218,7 @@
 			
 			$entries_count = new Api_GetEntriesCount();
 			
-			$entries_count->setSessionId($this->_session_id);
+			$entries_count->setSessionId($this->_sessionId);
 			$entries_count->setModuleName($module_name);
 			$entries_count->setQuery($query);
 			$entries_count->setDeleted($deleted);
@@ -241,7 +241,7 @@
 			
 			$set_relationships = new Api_SetRelationships();
 			
-			$set_relationships->setSessionId($this->_session_id);
+			$set_relationships->setSessionId($this->_sessionId);
 			$set_relationships->setModuleNames($module_names);
 			$set_relationships->setModuleIds($module_ids);
 			$set_relationships->setLinkFieldNames($link_field_names);
@@ -263,7 +263,7 @@
 			
 			$set_entries = new Api_SetEntries();
 			
-			$set_entries->setSessionId($this->_session_id);
+			$set_entries->setSessionId($this->_sessionId);
 			$set_entries->setModuleName($module_name);
 			$set_entries->setNameValueList($name_value_lists);
 			
@@ -289,7 +289,7 @@
 			
 			$get_relationship = new Api_GetRelationship();
 			
-			$get_relationship->setSessionId($this->_session_id);
+			$get_relationship->setSessionId($this->_sessionId);
 			$get_relationship->setModuleName($module_name);
 			$get_relationship->setModuleIds($module_ids);
 			$get_relationship->setLinkFieldName($link_field_name);
