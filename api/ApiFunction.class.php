@@ -8,6 +8,13 @@
     abstract class Api_ApiFunction
     {
         /**
+         * Instance of a curl object
+         * 
+         * @var object
+         */
+        private $_curl;
+
+        /**
          * Constructor
          */
         public function __construct()
@@ -22,9 +29,11 @@
          */
         final public function execute()
         {
-            require_once dirname(dirname(__FILE__)).'/curl/SugarCurlRequest.class.php';
-            
-            $curl = new Curl_SugarCurlRequest();
+            if(empty($this->_curl)) {
+                require_once dirname(dirname(__FILE__)).'/curl/SugarCurlRequest.class.php';
+                
+                $this->_curl = new Curl_SugarCurlRequest();
+            }
             
             // Build the parameter array using the overridden method in each child class
         	$parameters = $this->buildParameters();
@@ -46,10 +55,10 @@
             // Build the field data to be sent to the server
             $post = self::_buildFields($name, $data);
             
-            $curl->setPostFields($post);
+            $this->_curl->setPostFields($post);
             
             // Make the cURL request
-            $response = $curl->execute();
+            $response = $this->_curl->execute();
             
             // Did the server send any type of response?
             if (empty($response)) {
@@ -75,7 +84,7 @@
             if (!is_object($result)) {
                 throw new Exception('Result is not an object');
             }
-            
+            /*
             // If one of the required return fields doesn't exist, display the returned error
             if (!(
                 isset($result->id)
@@ -84,12 +93,17 @@
                 || isset($result->created,$result->failed,$result->deleted)
             )) {
                 throw new Exception($result->name.' - '.$result->description);
-            }
+            }*/
             
             // If all is working correctly, return the data transfer object
             return $result;
         }
         
+        public function setCurlObject($curl)
+        {
+            $this->_curl = $curl;
+        }
+         
         /**
          * Builds the parameter array
          * 
