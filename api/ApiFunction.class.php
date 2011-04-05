@@ -99,6 +99,11 @@
             return $result;
         }
         
+        /**
+         * Set the Curl object
+         *
+         * @param object $curl
+         */
         public function setCurlObject($curl)
         {
             $this->_curl = $curl;
