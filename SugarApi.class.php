@@ -12,7 +12,14 @@
          * @var string
          */
         protected $_sessionId;
-                                        
+        
+        /**
+         * Curl object
+         *
+         * @var object
+         */
+        private $_curl;
+
         /**
          * Constructor
          */
@@ -20,7 +27,17 @@
         {
             // Do nothing
         }
-                                                                                                
+         
+        private function _isCurlSet()
+        {
+            return !empty($this->_curl);
+        }
+        
+        final public function setCurlObject($curl)
+        {
+            $this->_curl = $curl;
+        }
+                                                                                                        
         /**
          * Log in to the system
          *
@@ -33,7 +50,12 @@
             require_once 'api/Login.class.php';
         
             $login = new Api_Login();
-        
+            
+            if($this->_isCurlSet())
+            {
+                $login->setCurlObject($this->_curl);
+            }
+
             if (!empty($username))
             {
                 $login->setUsername($username);
@@ -58,6 +80,11 @@
         
             $logout = new Api_Logout();
         
+            if($this->_isCurlSet())
+            {
+                $logout->setCurlObject($this->_curl);
+            }
+
             $logout->setSessionId($this->_sessionId);
         
             $logout->execute();
@@ -79,7 +106,12 @@
             require_once 'api/GetEntryList.class.php';
        
             $entry_list = new Api_GetEntryList();
-       
+
+            if($this->_isCurlSet())
+            {
+                $entry_list->setCurlObject($this->_curl);
+            }
+
             $entry_list->setSessionId($this->_sessionId);
             $entry_list->setModuleName($module_name);
             $entry_list->setQuery($query);
@@ -95,17 +127,21 @@
          * Retrieve a single SugarBean based on ID
          *
          * @param string $module_name
-         * @param string $query
          * @param string $id
          * @param array $select_fields
          * @param array $link_name_to_fields_array
          * @return object
          */
-        final public function get_entry($module_name, $query = '', $id = '', $select_fields = array(), $link_name_to_fields_array = array())
+        final public function get_entry($module_name = '', $id = '', $select_fields = array(), $link_name_to_fields_array = array())
         {
             require_once 'api/GetEntry.class.php';
 
             $entry = new Api_GetEntry();
+
+            if($this->_isCurlSet())
+            {
+                $entry->setCurlObject($this->_curl);
+            }
 
             $entry->setSessionId($this->_sessionId);
             $entry->setModuleName($module_name);
@@ -120,23 +156,27 @@
          * Retrieve a list of SugarBeans based on IDs
          *
          * @param string $module_name
-         * @param string $query
          * @param array $ids
          * @param array $select_fields
          * @param array $link_name_to_fields_array
          * @return object
          */
-        final public function get_entries($module_name, $query = '', $ids = array(), $select_fields = array(), $link_name_to_fields_array = array())
+        final public function get_entries($module_name = '', $ids = array(), $select_fields = array(), $link_name_to_fields_array = array())
         {
             require_once 'api/GetEntries.class.php';
 
             $entries = new Api_GetEntries();
 
-            $entry->setSessionId($this->_sessionId);
-            $entry->setModuleName($module_name);
-            $entry->setIds($ids);
-            $entry->setSelectFields($select_fields);
-            $entry->setLinkNameToFieldsArray($link_name_to_fields_array);
+            if($this->_isCurlSet())
+            {
+                $entries->setCurlObject($this->_curl);
+            }
+
+            $entries->setSessionId($this->_sessionId);
+            $entries->setModuleName($module_name);
+            $entries->setIds($ids);
+            $entries->setSelectFields($select_fields);
+            $entries->setLinkNameToFieldsArray($link_name_to_fields_array);
 
             return $entries->execute();
         }
@@ -150,11 +190,16 @@
          * @param integer $max_results
          * @return object
          */
-        final public function search_by_module($search_string, $modules = '', $offset = '', $max_results = '')
+        final public function search_by_module($search_string = '', $modules = '', $offset = '', $max_results = '')
         {
             require_once 'api/SearchByModule.class.php';
 
             $module = new Api_SearchByModule();
+
+            if($this->_isCurlSet())
+            {
+                $module->setCurlObject($this->_curl);
+            }
 
             $module->setSessionId($this->_sessionId);
             $module->setSearchString($search_string);
@@ -178,6 +223,11 @@
 
             $document = new Api_SetDocumentRevision();
 
+            if($this->_isCurlSet())
+            {
+                $document->setCurlObject($this->_curl);
+            }
+
             $document->setSessionId($this->_sessionId);
             $document->setDocumentRevision($document_revision);
             $document->setDocumentId($id);
@@ -198,12 +248,17 @@
 
             $document = new Api_GetDocumentRevision();
 
+            if($this->_isCurlSet())
+            {
+                $document->setCurlObject($this->_curl);
+            }
+
             $document->setSessionId($this->_sessionId);
             $document->setDocumentId($id);
             
             return $document->execute();
         }
-        
+
         /**
          * Retrieves the specified number of records in a module.
          *
@@ -214,18 +269,23 @@
          */
         final public function get_entries_count($module_name, $query, $deleted)
         {
-			require_once 'api/GetEntriesCount.class.php';
-			
-			$entries_count = new Api_GetEntriesCount();
-			
-			$entries_count->setSessionId($this->_sessionId);
-			$entries_count->setModuleName($module_name);
-			$entries_count->setQuery($query);
-			$entries_count->setDeleted($deleted);
-			
-			return $entries_count->execute();
+            require_once 'api/GetEntriesCount.class.php';
+
+            $entries_count = new Api_GetEntriesCount();
+
+            if($this->_isCurlSet())
+            {
+                $entries_count->setCurlObject($this->_curl);
+            }
+
+            $entries_count->setSessionId($this->_sessionId);
+            $entries_count->setModuleName($module_name);
+            $entries_count->setQuery($query);
+            $entries_count->setDeleted($deleted);
+
+            return $entries_count->execute();
         }
-        
+                                            
         /**
          * Sets multiple relationships between two SugarBeans.
          *
@@ -235,21 +295,26 @@
          * @param array $related_id
          * @return object
          */
-   		final public function set_relationships($module_names = array(), $module_ids = array(), $link_field_names = array(), $related_id = array())
+        final public function set_relationships($module_names = array(), $module_ids = array(), $link_field_names = array(), $related_id = array())
         {
-			require_once 'api/SetRelationships.class.php';
-			
-			$set_relationships = new Api_SetRelationships();
-			
-			$set_relationships->setSessionId($this->_sessionId);
-			$set_relationships->setModuleNames($module_names);
-			$set_relationships->setModuleIds($module_ids);
-			$set_relationships->setLinkFieldNames($link_field_names);
-			$set_relationships->setRelatedId($related_id);
-			
-			return $set_relationships->execute();
+            require_once 'api/SetRelationships.class.php';
+
+            $set_relationships = new Api_SetRelationships();
+
+            if($this->_isCurlSet())
+            {
+                $set_relationships->setCurlObject($this->_curl);
+            }
+
+            $set_relationships->setSessionId($this->_sessionId);
+            $set_relationships->setModuleNames($module_names);
+            $set_relationships->setModuleIds($module_ids);
+            $set_relationships->setLinkFieldNames($link_field_names);
+            $set_relationships->setRelatedId($related_id);
+
+            return $set_relationships->execute();
         }
-        
+                                                                                    
         /**
          * Creates or updates a list of SugarBeans.
          *
@@ -257,19 +322,24 @@
          * @param array $name_value_lists
          * @return object
          */
-       	final public function set_entries($module_name, $name_value_lists = array())
+        final public function set_entries($module_name, $name_value_lists = array())
         {
-			require_once 'api/SetEntries.class.php';
-			
-			$set_entries = new Api_SetEntries();
-			
-			$set_entries->setSessionId($this->_sessionId);
-			$set_entries->setModuleName($module_name);
-			$set_entries->setNameValueList($name_value_lists);
-			
-			return $set_entries->execute();
+            require_once 'api/SetEntries.class.php';
+
+            $set_entries = new Api_SetEntries();
+
+            if($this->_isCurlSet())
+            {
+                $set_entries->setCurlObject($this->_curl);
+            }
+
+            $set_entries->setSessionId($this->_sessionId);
+            $set_entries->setModuleName($module_name);
+            $set_entries->setNameValueList($name_value_lists);
+
+            return $set_entries->execute();
         }
-        
+                                                                                                                                
         /**
          * Retrieves a collection of beans that are related to the specified bean and, optionally, returns relationship data.
          *
@@ -282,24 +352,28 @@
          * @param integer $deleted
          * @return object
          */
-		final public function get_relationship($module_name, $module_name, $module_ids,  $link_field_name, $related_module_query,
-		 $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
+        final public function get_relationship($module_name, $module_name, $module_ids, $link_field_name, $related_module_query,
+                                               $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
         {
-			require_once 'api/GetRelationship.class.php';
-			
-			$get_relationship = new Api_GetRelationship();
-			
-			$get_relationship->setSessionId($this->_sessionId);
-			$get_relationship->setModuleName($module_name);
-			$get_relationship->setModuleIds($module_ids);
-			$get_relationship->setLinkFieldName($link_field_name);
-			$get_relationship->setRelatedModuleQuery($related_module_query);
-			$get_relationship->setRelatedFields($related_fields);
-			$get_relationship->setRelatedModuleLinkNameToFieldsArray($related_module_link_name_to_fields_array);
-			$get_relationship->setDeleted($deleted);
-			
-			return $get_relationship->execute();
+            require_once 'api/GetRelationship.class.php';
+
+            $get_relationship = new Api_GetRelationship();
+
+            if($this->_isCurlSet())
+            {
+                $get_relationship->setCurlObject($this->_curl);
+            }
+
+            $get_relationship->setSessionId($this->_sessionId);
+            $get_relationship->setModuleName($module_name);
+            $get_relationship->setModuleIds($module_ids);
+            $get_relationship->setLinkFieldName($link_field_name);
+            $get_relationship->setRelatedModuleQuery($related_module_query);
+            $get_relationship->setRelatedFields($related_fields);
+            $get_relationship->setRelatedModuleLinkNameToFieldsArray($related_module_link_name_to_fields_array);
+            $get_relationship->setDeleted($deleted);
+
+            return $get_relationship->execute();
         }
-        
     }
 ?>
