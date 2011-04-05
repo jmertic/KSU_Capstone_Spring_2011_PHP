@@ -113,12 +113,12 @@
                 throw new Exception('Session ID not set');
             }
 
-            if(empty($this->_moduleNames)){
+            if(empty($this->_moduleName)){
                 throw new Exception('Module Names not set');
             }
                                                                                         
             if(empty($this->_ids)){       
-                throw new Exception('IDs not set')
+                throw new Exception('IDs not set');
             }                                                                                                   
             $parameters = array(
                 'session' => $this->_sessionId,
