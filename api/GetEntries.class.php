@@ -7,8 +7,8 @@
      * @author Nathan Osysko
      * @package api
      */
-     class Api_GetEntries extends Api_ApiFunction
-     {
+    class Api_GetEntries extends Api_ApiFunction
+    {
         /**
          * Session ID
          *
