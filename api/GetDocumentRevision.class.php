@@ -8,8 +8,8 @@
      * @author Nathan Osysko
      * @package api
      */
-     class Api_GetDocumentRevision extends Api_ApiFunction
-     {
+    class Api_GetDocumentRevision extends Api_ApiFunction
+    {
         /**
          * Session ID
          *
