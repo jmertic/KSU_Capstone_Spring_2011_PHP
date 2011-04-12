@@ -28,7 +28,7 @@
          *
          * @var string
          */
-        private $_campaign-Id;
+        private $_campaign_Id;
 
         /**
          * Constructor
@@ -61,11 +61,11 @@
         /**
          * Set the Campaign-ID
          * 
-         * @param string $campaign-id
+         * @param string $campaign_id
          */
-        final public function setCampaignId($campaign-id)
+        final public function setCampaignId($campaign_id)
         {
-            $this->_campaign-Id = $campaign-id;
+            $this->_campaign_Id = $campaign_id;
         }
 
         /**
@@ -83,14 +83,14 @@
                 throw new Exception('Targets not set');
             }
 
-            if(empty($this->_campaign-Id)){
+            if(empty($this->_campaign_Id)){
                 throw new Exception('Campaign-ID not set');
             }
 
             $parameters = array(
                 'session' => $this->_sessionId,
                 'targets' => $this->_targets,
-                'campaign-id' => $this->_campaign_Id,
+                'campaign_id' => $this->_campaign_Id,
             );
 
             return $parameters;
