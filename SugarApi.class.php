@@ -385,5 +385,76 @@
 
             return $get_relationship->execute();
         }
+
+        /**
+         * Retrieves the list of modules available to the current user logged into the system.
+         * 
+         * @return object
+         */
+        final public function get_available_modules()
+        {
+            require_once 'api/GetAvailableModules.class.php';
+
+            $modules = new Api_GetAvailableModules();
+
+            if($this->_isCurlSet())
+            {
+                $modules->setCurlObject($this->_curl);
+            }
+
+            $modules->setSessionId($this->_sessionId);
+
+            return $modules->execute();
+        }
+
+        /**
+         * Retrieves a list of report entries based on specified report IDs.
+         *
+         * @param array $ids
+         * @param string $select_fields
+         * @return object
+         */
+        final public function get_report_entries($ids = array(), $select_fields = '')
+        {
+            require_once 'api/GetReportEntries.class.php';
+
+            $entries = new Api_GetReportEntries();
+
+            if($this->_isCurlSet())
+            {
+                $entries->setCurlObject($this->_curl);
+            }
+
+            $entries->setSessionId($this->_sessionId);
+            $entries->setIds($ids);
+            $entries->setSelectFields($select_fields);
+
+            return $entries->execute();
+        }
+
+        /**
+         * Performs a mail merge for the specified campaign.
+         *
+         * @param array $targets
+         * @param string $campaign_id
+         * @return object
+         */
+        final public function set_campaign_merge($targets = array(), $campaign_id = '')
+        {
+            require_once 'api/SetCampaignMerge.class.php';
+
+            $merge = new Api_SetCampaignMerge();
+
+            if($this->_isCurlSet())
+            {
+                $merge->setCurlObject($this->_curl);
+            }
+
+            $merge->setSessionId($this->_sessionId);
+            $merge->setTargets($targets);
+            $merge->setCamapaignId($campaign_id);
+            
+            return $merge->execute();
+        }
     }
 ?>
