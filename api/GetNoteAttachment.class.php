@@ -9,24 +9,52 @@
 
 class Api_GetNoteAttachment extends Api_ApiFunction
 {
-//session, id)
+/**
+* Session ID
+*The ID of the session
+* @var string
+*/
         private $_sessionId;
+
+/**
+* id
+*The ID of the note.
+* @var string
+*/
         private $_id;
 
+/**
+* Constructor
+*/
  public function __construct()
         {
             parent::__construct();
         }
 
-  public function setSessionId($session_id)
+/**
+* Set the session id
+*
+* @param string $sessionid
+*/
+final public function setSessionId($session_id)
         {
             $this->_sessionId = $session_id;
         }
 
- public function setId($ID)
+/**
+* Set the  id
+*
+* @param string $id
+*/
+final public function setId($ID)
         {
             $this->_id = $ID;
         }
+/**
+* Builds the parameter array
+*
+* @return $parameters
+*/
 
 protected function buildParameters()
         {
@@ -43,7 +71,5 @@ protected function buildParameters()
 
 
 }//end
-
-
 ?>
 
