@@ -1,7 +1,11 @@
-//author Yousef Guzaiz
-
 <?php
     require_once 'ApiFunction.class.php';
+/**
+*Retrieves an attachment from a note.
+*
+*@author Yousef Guzaiz
+*@package api
+*/
 
 class Api_GetNoteAttachment extends Api_ApiFunction
 {
