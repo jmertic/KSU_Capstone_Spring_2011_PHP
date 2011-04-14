@@ -53,7 +53,7 @@
          *
          * @param string $username
          * @param string $password
-         * @return string
+         * @return object
          */
         final public function login($username = '', $password = '')
         {
@@ -63,22 +63,24 @@
             
             if($this->_isCurlSet())
             {
-                $login->setCurlObject($this->_curl);
+                $login->_curl = $this->_curl;
             }
 
             if (!empty($username))
             {
-                $login->setUsername($username);
+                $login->_username = $username;
             }
         
             if (!empty($password)) 
             {
-                $login->setPassword($password);
+                $login->_password = $password;
             }
 
-            $this->_sessionId = $login->execute()->id;
+            $result = $login->execute();
+            
+            $this->_sessionId = $result->id;
         
-            return $this->_sessionId;
+            return $result;
         }
     
         /**

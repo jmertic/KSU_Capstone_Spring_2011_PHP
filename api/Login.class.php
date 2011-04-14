@@ -55,26 +55,6 @@
         }
         
         /**
-         * Set the username
-         * 
-         * @param string $username
-         */
-        final public function setUsername($username)
-        {
-            $this->_username = $username;
-        }
-        
-        /**
-         * Set the password
-         * 
-         * @param string $password
-         */
-        final public function setPassword($password)
-        {
-            $this->_password = $password;
-        }
-        
-        /**
          * Builds the parameter array
          * 
          * @return array

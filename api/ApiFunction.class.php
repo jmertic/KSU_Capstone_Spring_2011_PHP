@@ -22,6 +22,11 @@
             // Do nothing
         }
         
+        public function __set($name, $value)
+        {
+        	$this->$name = $value;
+        }
+        
         /**
          * Execute the function with the specified parameters
          * 
@@ -74,26 +79,8 @@
             // Decode the server response
             $result = self::_decode($response);
             
-            // After decoding, is there anything left?
-            // e.g. was a valid response sent back?
-            if (empty($result)) {
-                throw new Exception('Result is empty.');
-            }
-            
-            // After decoding, was the result converted into a usable PHP object?
-            if (!is_object($result)) {
-                throw new Exception('Result is not an object');
-            }
-            /*
-            // If one of the required return fields doesn't exist, display the returned error
-            if (!(
-                isset($result->id)
-                || isset($result->result_count)
-                || isset($result->module_name)
-                || isset($result->created,$result->failed,$result->deleted)
-            )) {
-                throw new Exception($result->name.' - '.$result->description);
-            }*/
+            // Check the result for errors
+            self::errorCheck($result);
             
             // If all is working correctly, return the data transfer object
             return $result;
@@ -187,6 +174,57 @@
         	
         	// Return the finished API function name
         	return $result;
+        }
+        
+        /**
+         * Checks the cURL result for errors
+         * 
+         * @param string $result
+         */
+        protected static function errorCheck($result)
+        {
+        	// Do nothing
+        }
+        
+        /**
+         * Is the result empty?
+         * 
+         * @param mixed $result
+         */
+        final protected static function isEmpty($result)
+        {
+        	if(empty($result)) {
+        		throw new Exception('Result is empty.');
+        	}
+        }
+        
+        /**
+         * Is the result an object?
+         * 
+         * @param mixed $result
+         */
+        final protected static function isObject($result)
+        {
+        	if (!is_object($result)) {
+                throw new Exception('Result is not an object');
+            }
+        }
+        
+        /**
+         * Does the specified object have the specified property?
+         * 
+         * @param object $result
+         * @param string $field_name
+         * @return bool
+         */
+        final protected static function keyFieldSet($result,$field_name)
+        {
+        	if(property_exists($result,$field_name)) {
+        		return TRUE;
+        	}
+        	else {
+        		return FALSE;
+        	}
         }
     }
 ?>
