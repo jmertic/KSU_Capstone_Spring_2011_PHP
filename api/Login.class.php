@@ -86,5 +86,21 @@
         {
             return md5($password);
         }
+        
+        /**
+         * Check the result for errors
+         * 
+         * @param $result
+         */
+        protected static function errorCheck($result)
+        {
+        	self::isEmpty($result);
+        	
+        	self::isObject($result);
+        	
+        	if(!self::keyFieldSet($result,'id')) {
+        		throw new Exception('ID not found. Error: '.$result->name.' - '.$result->description);
+        	}
+        }
     }
 ?>
