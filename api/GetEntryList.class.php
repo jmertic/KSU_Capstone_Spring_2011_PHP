@@ -22,46 +22,6 @@
             parent::__construct();
         }
         
-        public function setSessionId($session_id)
-        {
-            $this->_sessionId = $session_id;
-        }
-        
-        public function setModuleName($module_name)
-        {
-            $this->_moduleName = $module_name;
-        }
-        
-        public function setQuery($query)
-        {
-            $this->_query = $query;
-        }
-        
-        public function setOrderBy($order_by)
-        {
-            $this->_orderBy = $order_by;
-        }
-        
-        public function setOffset($offset)
-        {
-            $this->_offset = $offset;    
-        }
-        
-        public function addSelectField($field)
-        {
-            $this->_selectFields[] = $field;
-        }
-        
-        public function setSelectFields($fields)
-        {
-            $this->_selectFields = $fields;
-        }
-        
-        public function setLinkNameToFieldsArray($array)
-        {
-            $this->_linkNameToFieldsArray = $array;
-        }
-        
         protected function buildParameters()
         {
             if (empty($this->_sessionId)) {

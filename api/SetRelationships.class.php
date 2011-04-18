@@ -1,141 +1,93 @@
 <?php
     require_once 'ApiFunction.class.php';
 
-  /**
+	/**
      * Sets multiple relationships between two SugarBeans
      * 
      * @author Nick Thomas
      * @package api
      */
-
-class Api_SetRelationships extends Api_ApiFunction
-{
-
+	class Api_SetRelationships extends Api_ApiFunction
+	{
 		/**
-		* Session Id
-		* 
-	    * @var string
-	    */
-    private $_sessionId;
+		 * Session Id
+		 * 
+	     * @var string
+	     */
+    	private $_sessionId;
     
     	/**
-		* Module Names
-		* 
-	    * @var array
-	    */
-    private $_moduleNames = array();
+		 * Module Names
+		 * 
+	     * @var array
+	     */
+    	private $_moduleNames = array();
     
 		/**
-		* Module Ids
-		* 
-	    * @var array
-	    */
-    private $_moduleIds = array();
+		 * Module Ids
+		 * 
+	     * @var array
+	     */
+    	private $_moduleIds = array();
     
 		/**
-		* Link Field Names
-		* 
-	    * @var array
-	    */
-    private $_linkFieldNames = array();
+		 * Link Field Names
+		 * 
+	     * @var array
+	     */
+    	private $_linkFieldNames = array();
     
 		/**
-		* Related Id
-		* 
-	    * @var array
-	    */
-    private $_relatedId = array();
+		 * Related Id
+		 * 
+	     * @var array
+	     */
+    	private $_relatedId = array();
 
 
         /**
          * Constructor
          * 
          */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-    
-        /**
-         * Set the sessionId
-         * 
-         * @param string $session_id
-         */
-    public function setSessionId($session_id)
-    {
-	    $this->_sessionId = $session_id;
-    }
-
-        /**
-         * Set the ModuleNames
-         * 
-         * @param array $module_names
-         */
-    public function setModuleNames($module_names)
-    {
-	    $this->_moduleNames = $module_names;
-    }
-
-  		/**
-         * Set the ModuleIds
-         * 
-         * @param array $module_ids
-         */
-    public function setModuleIds($module_ids)
-    {
-	    $this->_moduleIds = $module_ids;
-    }
-
-		/**
-         * Set the LinkFieldNames
-         * 
-         * @param array $link_field_names
-         */
-    public function setLinkFieldNames($link_field_names)
-    {
-	    $this->_linkFieldNames = $link_field_names;
-    }
-
-  		/**
-         * Set the RelatedId
-         * 
-         * @param array $related_id
-         */
-    public function setRelatedId($related_id)
-    {
-	    $this->_relatedId = $related_id;
-    }
-
+    	public function __construct()
+    	{
+        	parent::__construct();
+    	}
     
     	/**
          * Builds the parameter array
          * 
          * @return array
          */
-    protected function buildParameters()
-    {
-  		if (empty($this->_sessionId)) {
-			throw new Exception('Session ID not set');
-		}
-		if (empty($this->_moduleNames)) {
-			throw new Exception('Module Names not set');
-		}
-		if (empty($this->_moduleIds)) {
-			throw new Exception('Module Ids not set');
-		}
-		if (empty($this->_linkFieldNames)) {
-			throw new Exception('Link Field Names not set');
-		}
-  		if (empty($this->_relatedId)) {
-			throw new Exception('Related Id not set');
-		}
-	    return array(
-		    'session' => $this->_sessionId,
-		    'module_names' => $this->_moduleNames,
-		    'module_ids' => $this->_moduleIds,
-		    'link_field_names' => $this->_linkFieldNames,
-		    'related_id' => $this->_relatedId
-	    );
-    }
-}
+    	protected function buildParameters()
+    	{
+  			if (empty($this->_sessionId)) {
+				throw new Exception('Session ID not set');
+			}
+		
+			if (empty($this->_moduleNames)) {
+				throw new Exception('Module Names not set');
+			}
+		
+			if (empty($this->_moduleIds)) {
+				throw new Exception('Module Ids not set');
+			}
+			
+			if (empty($this->_linkFieldNames)) {
+				throw new Exception('Link Field Names not set');
+			}
+  		
+  			if (empty($this->_relatedId)) {
+				throw new Exception('Related Id not set');
+			}
+	    
+	    	return array(
+		    	'session' => $this->_sessionId,
+		    	'module_names' => $this->_moduleNames,
+		    	'module_ids' => $this->_moduleIds,
+		    	'link_field_names' => $this->_linkFieldNames,
+		    	'related_id' => $this->_relatedId,
+		   	);
+    	}
+	}
 ?>

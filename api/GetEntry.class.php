@@ -53,56 +53,6 @@
         }
 
         /**
-         * Set the session id
-         *
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the module name
-         *
-         * @param string $modulename
-         */
-        final public function setModuleName($modulename)
-        {
-            $this->_moduleName = $modulename;
-        }
-
-        /**
-         * Set the id
-         *
-         * @param string $id
-         */
-        final public function setId($id)
-        {
-            $this->_id = $id;
-        }
-
-        /**
-         * Set select fields
-         *
-         * @param array $selectfields
-         */
-        final public function setSelectFields($selectfields)
-        {
-            $this->_selectFields = $selectfields;
-        }
-
-        /**
-         * Set link name to fields array
-         *
-         * @param array $linknametofields
-         */
-        final public function setLinkNameToFieldsArray($linknametofields)
-        {
-            $this->_linkNameToFields = $linknametofields;
-        }
-
-        /**
          * Builds the parameter array
          *
          * @return $parameters

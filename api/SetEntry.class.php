@@ -14,21 +14,6 @@
             parent::__construct();
         }
         
-        public function setSessionId($session_id)
-        {
-            $this->_sessionId = $session_id;
-        }
-        
-        public function setModuleName($module_name)
-        {
-            $this->_moduleName = $module_name;
-        }
-        
-        public function setNameValueList($array)
-        {
-            $this->_nameValueList = $array;
-        }
-        
         protected function buildParameters()
         {
             return array(

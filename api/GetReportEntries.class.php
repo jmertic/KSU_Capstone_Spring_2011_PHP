@@ -37,37 +37,7 @@
         {
             parent::__construct();
         }
-
-        /**
-         * Set the session id
-         * 
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the IDs
-         *
-         * @param array $ids
-         */
-        final public function setIds($ids)
-        {
-            $this->_ids = $ids;
-        }
-
-        /**
-         * Set select fields 
-         * 
-         * @param string $selectfields
-         */
-        final public function setSelectFields($selectfields)
-        {
-            $this->_selectFields = $selectfields;
-        }
-
+        
         /**
          * Builds the parameter array
          * 

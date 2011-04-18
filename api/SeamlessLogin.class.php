@@ -16,20 +16,14 @@
 		{
 			parent::__construct();
 		}
-		
-		public function setSessionId($session_id)
-		{
-			$this->_sessionId = $session_id;
-		}
-		
+
 		protected function buildParameters()
 		{
 			if (empty($this->_sessionId)) {
             	throw new Exception('Session ID not set');
             }
 
-         return $parameters;
-            
+         	return $parameters;        
 		}
-}
+	}
 ?>

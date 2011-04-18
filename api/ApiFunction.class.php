@@ -22,10 +22,16 @@
             // Do nothing
         }
         
-        public function __set($name, $value)
-        {
-        	$this->$name = $value;
-        }
+		/**
+		 * Set the variables
+		 *
+		 * @param string $name
+		 * @param $value
+		 */
+		public function __set($name, $value)
+		{
+			$this->$name = $value;
+       	}
         
         /**
          * Execute the function with the specified parameters
@@ -80,7 +86,7 @@
             $result = self::_decode($response);
             
             // Check the result for errors
-            self::errorCheck($result);
+			self::errorCheck($result);
             
             // If all is working correctly, return the data transfer object
             return $result;
@@ -175,56 +181,56 @@
         	// Return the finished API function name
         	return $result;
         }
-        
-        /**
-         * Checks the cURL result for errors
-         * 
-         * @param string $result
-         */
+		
+		/**
+		 * Checks the cURL result for errors
+		 *
+		 * @param string $result
+		 */
         protected static function errorCheck($result)
         {
         	// Do nothing
         }
         
         /**
-         * Is the result empty?
-         * 
-         * @param mixed $result
-         */
+		 * Is the result empty?
+		 *
+		 * @param mixed $result
+		 */
         final protected static function isEmpty($result)
         {
         	if(empty($result)) {
-        		throw new Exception('Result is empty.');
-        	}
+         		throw new Exception('Result is empty.');
+         	}
         }
         
         /**
-         * Is the result an object?
-         * 
-         * @param mixed $result
-         */
+		 * Is the result an object?
+		 *
+		 * @param mixed $result
+		 */
         final protected static function isObject($result)
         {
         	if (!is_object($result)) {
-                throw new Exception('Result is not an object');
+            	throw new Exception('Result is not an object');
             }
         }
         
         /**
-         * Does the specified object have the specified property?
-         * 
-         * @param object $result
-         * @param string $field_name
-         * @return bool
-         */
+		 * Does the specified object have the specified property?
+		 *
+		 * @param object $result
+		 * @param string $field_name
+		 * @return bool
+		 */
         final protected static function keyFieldSet($result,$field_name)
         {
         	if(property_exists($result,$field_name)) {
-        		return TRUE;
-        	}
-        	else {
-        		return FALSE;
-        	}
+         		return TRUE;
+         	}
+         	else {
+         		return FALSE;
+         	}
         }
     }
 ?>

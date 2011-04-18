@@ -43,7 +43,7 @@
          *
          * @param object $curl
          */
-        final public function setCurlObject($curl)
+        public function setCurlObject($curl)
         {
             $this->_curl = $curl;
         }
@@ -77,7 +77,7 @@
             }
 
             $result = $login->execute();
-            
+
             $this->_sessionId = $result->id;
         
             return $result;
@@ -94,10 +94,10 @@
         
             if($this->_isCurlSet())
             {
-                $logout->setCurlObject($this->_curl);
+                $logout->_curl = $this->_curl;
             }
 
-            $logout->setSessionId($this->_sessionId);
+            $logout->_sessionId = $this->_sessionId;
         
             $logout->execute();
         }
@@ -121,16 +121,16 @@
 
             if($this->_isCurlSet())
             {
-                $entry_list->setCurlObject($this->_curl);
+                $entry_list->_curl = $this->_curl;
             }
 
-            $entry_list->setSessionId($this->_sessionId);
-            $entry_list->setModuleName($module_name);
-            $entry_list->setQuery($query);
-            $entry_list->setOrderBy($order_by);
-            $entry_list->setOffset($offset);
-            $entry_list->setSelectFields($select_fields);
-            $entry_list->setLinkNameToFieldsArray($link_name_to_fields_array);
+            $entry_list->_sessionId = $this->_sessionId;
+            $entry_list->_moduleName = $module_name;
+            $entry_list->_query =  $query;
+            $entry_list->_orderBy = $order_by;
+            $entry_list->_offset = $offset;
+            $entry_list->_selectFields = $select_fields;
+            $entry_list->_linkNameToFieldsArray = $link_name_to_fields_array;
        
             return $entry_list->execute();
         }
@@ -152,14 +152,14 @@
 
             if($this->_isCurlSet())
             {
-                $entry->setCurlObject($this->_curl);
+                $entry->_curl = $this->_curl;
             }
 
-            $entry->setSessionId($this->_sessionId);
-            $entry->setModuleName($module_name);
-            $entry->setId($id);
-            $entry->setSelectFields($select_fields);
-            $entry->setLinkNameToFieldsArray($link_name_to_fields_array);
+            $entry->_sessionId = $this->_sessionId;
+            $entry->_moduleName = $module_name;
+            $entry->_id = $id;
+            $entry->_selectFields = $select_fields;
+            $entry->_linkNameToFieldsArray = $link_name_to_fields_array;
             
             return $entry->execute();
         }
@@ -181,14 +181,14 @@
 
             if($this->_isCurlSet())
             {
-                $entries->setCurlObject($this->_curl);
+                $entries->_curl = $this->_curl;
             }
 
-            $entries->setSessionId($this->_sessionId);
-            $entries->setModuleName($module_name);
-            $entries->setIds($ids);
-            $entries->setSelectFields($select_fields);
-            $entries->setLinkNameToFieldsArray($link_name_to_fields_array);
+            $entries->_sessionId = $this->_sessionId;
+            $entries->_moduleName = $module_name;
+            $entries->_ids = $ids;
+            $entries->_selectFields = $select_fields;
+            $entries->_linkNameToFieldsArray = $link_name_to_fields_array;
 
             return $entries->execute();
         }
@@ -210,14 +210,14 @@
 
             if($this->_isCurlSet())
             {
-                $module->setCurlObject($this->_curl);
+                $module->_curl = $this->_curl;
             }
 
-            $module->setSessionId($this->_sessionId);
-            $module->setSearchString($search_string);
-            $module->setModule($modules);
-            $module->setOffset($offset);
-            $module->setMaxresults($max_results);
+            $module->_sessionId = $this->_sessionId;
+            $module->_searchString = $search_string;
+            $module->_modules = $modules;
+            $module->_offset = $offset;
+            $module->_maxResults = $max_results;
 
             return $module->execute();
         }
@@ -237,12 +237,12 @@
 
             if($this->_isCurlSet())
             {
-                $document->setCurlObject($this->_curl);
+                $document->_curl = $this->_curl;
             }
 
-            $document->setSessionId($this->_sessionId);
-            $document->setDocumentRevision($document_revision);
-            $document->setDocumentId($id);
+            $document->_sessionId = $this->_sessionId;
+            $document->_documentRevision = $document_revision;
+            $document->_documentId = $id;
 
             return $document->execute();
         }
@@ -262,11 +262,11 @@
 
             if($this->_isCurlSet())
             {
-                $document->setCurlObject($this->_curl);
+                $document->_curl = $this->_curl;
             }
 
-            $document->setSessionId($this->_sessionId);
-            $document->setDocumentId($id);
+            $document->_sessionId = $this->_sessionId;
+            $document->_documentId = $id;
             
             return $document->execute();
         }
@@ -287,13 +287,13 @@
 
             if($this->_isCurlSet())
             {
-                $entries_count->setCurlObject($this->_curl);
+                $entries_count->_curl = $this->_curl;
             }
 
-            $entries_count->setSessionId($this->_sessionId);
-            $entries_count->setModuleName($module_name);
-            $entries_count->setQuery($query);
-            $entries_count->setDeleted($deleted);
+            $entries_count->_sessionId = $this->_sessionId;
+            $entries_count->_moduleName = $module_name;
+            $entries_count->_query = $query;
+            $entries_count->_deleted = $deleted;
 
             return $entries_count->execute();
         }
@@ -315,14 +315,14 @@
 
             if($this->_isCurlSet())
             {
-                $set_relationships->setCurlObject($this->_curl);
+                $set_relationships->_curl = $this->_curl;
             }
 
-            $set_relationships->setSessionId($this->_sessionId);
-            $set_relationships->setModuleNames($module_names);
-            $set_relationships->setModuleIds($module_ids);
-            $set_relationships->setLinkFieldNames($link_field_names);
-            $set_relationships->setRelatedId($related_id);
+            $set_relationships->_sessionId = $this->_sessionId;
+            $set_relationships->_moduleNames = $module_names;
+            $set_relationships->_moduleIds = $module_ids;
+            $set_relationships->_linkFieldNames = $link_field_names;
+            $set_relationships->_relatedId = $related_id;
 
             return $set_relationships->execute();
         }
@@ -342,12 +342,12 @@
 
             if($this->_isCurlSet())
             {
-                $set_entries->setCurlObject($this->_curl);
+                $set_entries->_curl = $this->_curl;
             }
 
-            $set_entries->setSessionId($this->_sessionId);
-            $set_entries->setModuleName($module_name);
-            $set_entries->setNameValueList($name_value_lists);
+            $set_entries->_sessionId = $this->_sessionId;
+            $set_entries->_moduleName = $module_name;
+            $set_entries->_nameValueList = $name_value_lists;
 
             return $set_entries->execute();
         }
@@ -373,17 +373,17 @@
 
             if($this->_isCurlSet())
             {
-                $get_relationship->setCurlObject($this->_curl);
+                $get_relationship->_curl = $this->_curl;
             }
 
-            $get_relationship->setSessionId($this->_sessionId);
-            $get_relationship->setModuleName($module_name);
-            $get_relationship->setModuleIds($module_ids);
-            $get_relationship->setLinkFieldName($link_field_name);
-            $get_relationship->setRelatedModuleQuery($related_module_query);
-            $get_relationship->setRelatedFields($related_fields);
-            $get_relationship->setRelatedModuleLinkNameToFieldsArray($related_module_link_name_to_fields_array);
-            $get_relationship->setDeleted($deleted);
+            $get_relationship->_sessionId = $this->_sessionId;
+            $get_relationship->_moduleName = $module_name;
+            $get_relationship->_moduleIds = $module_ids;
+            $get_relationship->_linkFieldName = $link_field_name;
+            $get_relationship->_relatedModuleQuery = $related_module_query;
+            $get_relationship->_relatedFields = $related_fields;
+            $get_relationship->_relatedModuleLinkNameToFieldsArray = $related_module_link_name_to_fields_array;
+            $get_relationship->_deleted = $deleted;
 
             return $get_relationship->execute();
         }
@@ -401,10 +401,10 @@
 
             if($this->_isCurlSet())
             {
-                $modules->setCurlObject($this->_curl);
+                $modules->_curl = $this->_curl;
             }
 
-            $modules->setSessionId($this->_sessionId);
+            $modules->_sessionId = $this->_sessionId;
 
             return $modules->execute();
         }
@@ -424,12 +424,12 @@
 
             if($this->_isCurlSet())
             {
-                $entries->setCurlObject($this->_curl);
+                $entries->_curl = $this->_curl;
             }
 
-            $entries->setSessionId($this->_sessionId);
-            $entries->setIds($ids);
-            $entries->setSelectFields($select_fields);
+            $entries->_sessionId = $this->_sessionId;
+            $entries->_ids = $ids;
+            $entries->_selectFields = $select_fields;
 
             return $entries->execute();
         }
@@ -449,12 +449,12 @@
 
             if($this->_isCurlSet())
             {
-                $merge->setCurlObject($this->_curl);
+                $merge->_curl = $this->_curl;
             }
 
-            $merge->setSessionId($this->_sessionId);
-            $merge->setTargets($targets);
-            $merge->setCamapaignId($campaign_id);
+            $merge->_sessionId = $this->_sessionId;
+            $merge->_targets = $targets;
+            $merge->_camapaignId = $campaign_id;
             
             return $merge->execute();
         }

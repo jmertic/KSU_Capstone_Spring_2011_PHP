@@ -39,36 +39,6 @@
         }
 
         /**
-         * Set the session id
-         *
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the document revision
-         *
-         * @param string $documentrevision
-         */
-        final public function setDocumentRevision($documentrevision)
-        {
-            $this->_documentRevision = $documentrevision;
-        }
-
-        /**
-         * Set the document id
-         *
-         * @param string $documentid
-         */
-        final public function setDocumentId($documentid)
-        {
-            $this->_documentId = $documentid;
-        }
-
-        /**
          * Builds the parameter array
          *
          * @return $parameters

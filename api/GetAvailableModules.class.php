@@ -23,17 +23,7 @@
         {
             parent::__construct();
         }
-
-        /**
-         * Set the session id
-         *
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
+		
         /**
          * Builds the parameter array
          * 

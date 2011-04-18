@@ -18,31 +18,6 @@
             parent::__construct();
         }
         
-        public function setSessionId($session_id)
-        {
-            $this->_sessionId = $session_id;
-        }
-        
-        public function setModuleName($module_name)
-        {
-            $this->_moduleName = $module_name;
-        }
-        
-        public function setModuleId($module_id)
-        {
-            $this->_moduleId = $module_id;
-        }
-        
-        public function setLinkFieldName($link_field_name)
-        {
-            $this->_linkFieldName = $link_field_name;
-        }
-        
-        public function addRelatedId($id)
-        {
-            $this->_relatedIds[] = $id;
-        }
-        
         protected function _buildParameters()
         {
             return array(

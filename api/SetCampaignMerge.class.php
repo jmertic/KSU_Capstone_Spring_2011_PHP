@@ -39,36 +39,6 @@
         }
 
         /**
-         * Set the session id
-         * 
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the targets
-         *
-         * @param array $targets
-         */
-        final public function setTargets($targets)
-        {
-            $this->_targets = $targets;
-        }
-
-        /**
-         * Set the Campaign-ID
-         * 
-         * @param string $campaign_id
-         */
-        final public function setCampaignId($campaign_id)
-        {
-            $this->_campaign_Id = $campaign_id;
-        }
-
-        /**
          * Builds the parameter array
          * 
          * @returns $parameters

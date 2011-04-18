@@ -26,11 +26,11 @@
         private $_searchString;
 
         /**
-         * Module Names
+         * Modules
          *
          * @var string
          */
-        private $_moduleNames;
+        private $_modules;
 
         /**
          * Offset
@@ -55,56 +55,6 @@
         }
 
         /**
-         * Set the sessionid
-         *
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the searchstring
-         *
-         * @param string $searchstring
-         */
-        final public function setSearchString($searchstring)
-        {
-            $this->_searchString = $searchstring;
-        }
-
-        /**
-         * Set the modulenames
-         *
-         * @param string $modulenames
-         */
-        final public function setModule($modulenames)
-        {
-            $this->_moduleNames = $modulenames;
-        }
-
-        /**
-         * Set the offset
-         *
-         * @param string $offset
-         */
-        final public function setOffset($offset)
-        {
-            $this->_offset = $offset;
-        }
-
-        /**
-         * Set the maxresults
-         *
-         * @param string $maxresults
-         */
-        final public function setMaxResults($maxresults)
-        {
-            $this->_maxResults = $maxresults;
-        }
-
-        /**
          * Builds the parameter array
          *
          * @return $parameters
@@ -119,14 +69,14 @@
                 throw new Exception('Search string not set');
             }
 
-            if(empty($this->_moduleNames)){
-                throw new Exception('Module Names not set');
+            if(empty($this->_modules)){
+                throw new Exception('Modules not set');
             }
 
             $parameters = array(
                 'session' => $this->_sessionId,
                 'search_string' => $this->_searchString,
-                'modules' => $this->_moduleNames,
+                'modules' => $this->_modules,
             );
 
             if(!empty($this->_offset)){

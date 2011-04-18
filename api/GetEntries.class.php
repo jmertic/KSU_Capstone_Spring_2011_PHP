@@ -42,7 +42,7 @@
          *
          * @var array
          */
-        private $_linkNameToFields = array();
+        private $_linkNameToFieldsArray = array();
 
         /**
          * Constructor
@@ -51,57 +51,7 @@
         {
             parent::__construct();
         }
-
-        /**
-         * Set the session id
-         *
-         * @param string $sessionid
-         */
-        final public function setSessionId($sessionid)
-        {
-            $this->_sessionId = $sessionid;
-        }
-
-        /**
-         * Set the module name
-         *
-         * @param string $modulename
-         */
-        final public function setModuleName($modulename)
-        {
-            $this->_moduleName = $modulename;
-        }
-
-        /**
-         * Set the ids
-         *
-         * @param array $ids
-         */
-        final public function setIds($ids)
-        {
-            $this->_ids = $ids;
-        }
-
-        /**
-         * Set select fields
-         *
-         * @param array $selectfields
-         */
-        final public function setSelectFields($selectfields)
-        {
-            $this->_selectFields = $selectfields;
-        }
-
-        /**
-         * Set link name to fields array
-         *
-         * @param array $linknametofields
-         */
-        final public function setLinkNameToFieldsArray($linknametofields)
-        {
-            $this->_linkNameToFields = $linknametofields;
-        }
-
+		
         /**
          * Builds the parameter array
          *
@@ -130,8 +80,8 @@
                 $parameters['select_fields'] = $this->_selectFields;
             }
             
-            if(!empty($this->_linkNameToFields)){
-                $parameters['link_name_to_fields_array'] = $this->_linkNameToFields;
+            if(!empty($this->_linkNameToFieldsArray)){
+                $parameters['link_name_to_fields_array'] = $this->_linkNameToFieldsArray;
             }
 
             return $parameters;

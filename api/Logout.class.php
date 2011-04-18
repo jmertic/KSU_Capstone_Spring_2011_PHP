@@ -10,11 +10,6 @@
             parent::__construct();
         }
         
-        public function setSessionId($session_id)
-        {
-            $this->_sessionId = $session_id;
-        }
-        
         protected function buildParameters()
         {
             return array(
