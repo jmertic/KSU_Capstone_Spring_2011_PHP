@@ -46,6 +46,17 @@
 		{
 			parent::__construct();
 		}
+
+		/**
+         * Set the variables
+         *
+         * @param string $name
+         * @param $value
+         */
+        public function __set($name, $value)
+        {
+            $this->$name = $value;
+        }
 	
 		/**
          * Builds the parameter array

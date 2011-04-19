@@ -8,21 +8,32 @@
 		 * The ID of the session
 		 * @var string
 		 */
-        private $_sessionId;
-        
-        /**
+		private $_sessionId;
+
+		/**
 		 * id
 		 * The ID of the note.
 		 * @var string
 		 */
-        private $_id;
+		private $_id;
 
 		/**
 		 * Constructor
 		 */
- 		public function __construct()
+		public function __construct()
+		{
+			parent::__construct();
+		}
+        
+		/**
+         * Set the variables
+         *
+         * @param string $name
+         * @param $value
+         */
+        public function __set($name, $value)
         {
-            parent::__construct();
+            $this->$name = $value;
         }
 
 		/**
@@ -31,15 +42,15 @@
 		 * @return $parameters
 		 */
 		protected function buildParameters()
-        {
+		{
 			if (empty($this->_sessionId)) {
-                throw new Exception('Session ID not set');
-            }
+				throw new Exception('Session ID not set');
+			}
 
-            return array(
-                'session' => $this->_sessionId,
-                'id' => $this->_id,
-            );
-        }
+			return array(
+				'session' => $this->_sessionId,
+				'id' => $this->_id,
+			);
+		}
 	}
 ?>
