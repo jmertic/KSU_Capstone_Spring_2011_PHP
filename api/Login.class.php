@@ -88,8 +88,8 @@
         }
         
         /**
-		 * Check the result for errors
-		 * 
+         * Check the result for errors
+         * 
 		 * @param $result
 		 */
 		protected static function errorCheck($result)
