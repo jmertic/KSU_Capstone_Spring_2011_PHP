@@ -352,11 +352,11 @@
             return $set_entries->execute();
         }
                                                                                                                                 
-        /**
+    /**
          * Retrieves a collection of beans that are related to the specified bean and, optionally, returns relationship data.
          *
          * @param string $module_name
-         * @param string $module_ids
+         * @param string $module_id
          * @param string $link_field_name
          * @param string $related_module_query
          * @param array $related_fields
@@ -364,28 +364,23 @@
          * @param integer $deleted
          * @return object
          */
-        final public function get_relationship($module_name, $module_name, $module_ids, $link_field_name, $related_module_query,
-                                               $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
+		final public function get_relationships($module_name, $module_name, $module_id,  $link_field_name, $related_module_query,
+		 $related_fields = array(), $related_module_link_name_to_fields_array = array(), $deleted)
         {
-            require_once 'api/GetRelationship.class.php';
-
-            $get_relationship = new Api_GetRelationship();
-
-            if($this->_isCurlSet())
-            {
-                $get_relationship->_curl = $this->_curl;
-            }
-
-            $get_relationship->_sessionId = $this->_sessionId;
-            $get_relationship->_moduleName = $module_name;
-            $get_relationship->_moduleIds = $module_ids;
-            $get_relationship->_linkFieldName = $link_field_name;
-            $get_relationship->_relatedModuleQuery = $related_module_query;
-            $get_relationship->_relatedFields = $related_fields;
-            $get_relationship->_relatedModuleLinkNameToFieldsArray = $related_module_link_name_to_fields_array;
-            $get_relationship->_deleted = $deleted;
-
-            return $get_relationship->execute();
+			require_once 'api/GetRelationships.class.php';
+			
+			$get_relationships = new Api_GetRelationship();
+			
+			$get_relationships->setSessionId($this->_session_id);
+			$get_relationships->setModuleName($module_name);
+			$get_relationships->setModuleIds($module_id);
+			$get_relationships->setLinkFieldName($link_field_name);
+			$get_relationships->setRelatedModuleQuery($related_module_query);
+			$get_relationships->setRelatedFields($related_fields);
+			$get_relationships->setRelatedModuleLinkNameToFieldsArray($related_module_link_name_to_fields_array);
+			$get_relationships->setDeleted($deleted);
+			
+			return $get_relationships->execute();
         }
 
         /**
