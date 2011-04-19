@@ -43,9 +43,9 @@
          *
          * @param object $curl
          */
-        public function setCurlObject($curl)
+        public function __set($name, $value)
         {
-            $this->_curl = $curl;
+            $this->$name = $value;
         }
                                                                                                         
         /**
@@ -79,7 +79,7 @@
             $result = $login->execute();
 
             $this->_sessionId = $result->id;
-        
+
             return $result;
         }
     
