@@ -48,7 +48,7 @@
         /**
          * Related Fields
          * 
-         * @var array
+         * @var string
          */
 		private $_relatedFields = array();
 
@@ -110,7 +110,7 @@
 			}
 		
 			if (empty($this->_relatedModuleQuery)) {
-				throw new Exception('Related Module Query not set');
+				$this->_relatedModuleQuery = "";
 			}
 		
 			if (empty($this->_relatedFields)) {
@@ -118,11 +118,11 @@
 			}
 		
 			if (empty($this->_relatedModuleLinkNameToFieldsArray)) {
-				throw new Exception('Related Module Link Name To Fields Array not set');
+				$this->_relatedModuleLinkNameToFieldsArray = array();
 			}
 			
 			if (empty($this->_deleted)) {
-				throw new Exception('Deleted not set');
+				$this->_deleted = 0;
 			}
 		
 			return array(
