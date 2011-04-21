@@ -21,7 +21,7 @@
          *
          * @var string
          */
-        private $_documentRevision
+        private $_documentRevision;
 
         /**
          * Document ID
@@ -38,15 +38,34 @@
             parent::__construct();
         }
 
-		/**
-         * Set the variables
+        /**
+         * Set the session id
          *
-         * @param string $name
-         * @param $value
+         * @param string $sessionid
          */
-        public function __set($name, $value)
+        final public function setSessionId($sessionid)
         {
-            $this->$name = $value;
+            $this->_sessionId = $sessionid;
+        }
+
+        /**
+         * Set the document revision
+         *
+         * @param string $documentrevision
+         */
+        final public function setDocumentRevision($documentrevision)
+        {
+            $this->_documentRevision = $documentrevision;
+        }
+
+        /**
+         * Set the document id
+         *
+         * @param string $documentid
+         */
+        final public function setDocumentId($documentid)
+        {
+            $this->_documentId = $documentid;
         }
 
         /**

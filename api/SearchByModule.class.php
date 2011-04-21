@@ -26,11 +26,11 @@
         private $_searchString;
 
         /**
-         * Modules
+         * Module Names
          *
          * @var string
          */
-        private $_modules;
+        private $_moduleNames;
 
         /**
          * Offset
@@ -55,14 +55,53 @@
         }
 
         /**
-         * Set the variables
+         * Set the sessionid
          *
-         * @param string $name
-         * @param $value
+         * @param string $sessionid
          */
-        public function __set($name, $value)
+        final public function setSessionId($sessionid)
         {
-            $this->$name = $value;
+            $this->_sessionId = $sessionid;
+        }
+
+        /**
+         * Set the searchstring
+         *
+         * @param string $searchstring
+         */
+        final public function setSearchString($searchstring)
+        {
+            $this->_searchString = $searchstring;
+        }
+
+        /**
+         * Set the modulenames
+         *
+         * @param string $modulenames
+         */
+        final public function setModule($modulenames)
+        {
+            $this->_moduleNames = $modulenames;
+        }
+
+        /**
+         * Set the offset
+         *
+         * @param string $offset
+         */
+        final public function setOffset($offset)
+        {
+            $this->_offset = $offset;
+        }
+
+        /**
+         * Set the maxresults
+         *
+         * @param string $maxresults
+         */
+        final public function setMaxResults($maxresults)
+        {
+            $this->_maxResults = $maxresults;
         }
 
         /**
@@ -80,27 +119,29 @@
                 throw new Exception('Search string not set');
             }
 
-            if(empty($this->_modules)){
-                throw new Exception('Modules not set');
+            if(empty($this->_moduleNames)){
+                throw new Exception('Module Names not set');
             }
 
             $parameters = array(
                 'session' => $this->_sessionId,
                 'search_string' => $this->_searchString,
-                'modules' => $this->_modules,
+                'modules' => $this->_moduleNames,
             );
 
             if(!empty($this->_offset)){
                 $parameters['offset'] = $this->_offset;
-            else
-                parameters['offset'] = ' ';
+            }
+            else {
+                $parameters['offset'] = ' ';
+            }
 
             if(!empty($this->_maxResults)){
                 $parameters['max_results'] = $this->_maxResults;
-            else
-                parameters['max_results'] = ' ';
-
-                'max_results' => $this->_maxResults,
+            }
+            else {
+                $parameters['max_results'] = ' ';
+            }
 
             return $parameters;
         }
