@@ -527,7 +527,7 @@
         /**
          * Performs a seamless login during synchronization.
          *
-         *@return object
+         * @return object
          */
         final public function seamless_login()
         {
@@ -592,7 +592,7 @@
         }
         
         /**
-         * Add or replace a note’s attachment. Optionally, you can set the relationship of this note to related modules using related_module_id and related_module_name.
+         * Add or replace a notes attachment. Optionally, you can set the relationship of this note to related modules using related_module_id and related_module_name.
          *
          * @param array $note
          * @param string $filename
