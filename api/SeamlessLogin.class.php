@@ -1,17 +1,23 @@
 <?php
+	require_once 'ApiFunction.class.php';
+	
 	/**
-     * Seamless Login class for the Sugar CRM API
+     * Performs a seamless login during synchronization.
      * 
      * @author Amin Alrusayni <aalrusay@kent.edu>
      */
-
-	require_once 'ApiFunction.class.php';
-	
-	class Api_SeamlessLogin extends Api_ApiFunction
+    class Api_SeamlessLogin extends Api_ApiFunction
 	{
+		/**
+		 * Session ID
+		 *
+		 * @var string
+		 */
 		private $_sessionId;
 	
-	
+		/**
+		 * Constructor
+		 */
 		public function __construct()
 		{
 			parent::__construct();
@@ -28,13 +34,19 @@
             $this->$name = $value;
         }
 
+		/**
+		 * Builds the parameter array
+		 *
+		 * @return array
 		protected function buildParameters()
 		{
 			if (empty($this->_sessionId)) {
             	throw new Exception('Session ID not set');
             }
 
-         	return $parameters;        
+         	return array(
+         		'session' => $this->_sessionId
+         	);        
 		}
 	}
 ?>

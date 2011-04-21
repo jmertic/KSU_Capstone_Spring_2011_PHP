@@ -1,17 +1,23 @@
 <?php
+	require_once 'ApiFunction.class.php';
+	
 	/**
-     * Get User Team Id class for the Sugar CRM API
+     * Retrieves the ID of the default team of the user who is logged into the current session.
      * 
      * @author Amin Alrusayni <aalrusay@kent.edu>
      */
-
-	require_once 'ApiFunction.class.php';
-	
 	class Api_GetUserTeamId extends Api_ApiFunction
 	{
+		/**
+		 * Session ID
+		 *
+		 * @var string
+		 */
 		private $_sessionId;
 	
-	
+		/**
+		 * Constructor
+		 */
 		public function __construct()
 		{
 			parent::__construct();
@@ -28,13 +34,19 @@
             $this->$name = $value;
         }
 		
+		/**
+		 * Build the parameter array
+		 *
+		 * @return array
 		protected function buildParameters()
 		{
 			if (empty($this->_sessionId)) {
             	throw new Exception('Session ID not set');
             }
             
-        	return $parameters;   
+        	return array(
+        		'session' => $this->_sessionId
+        	);   
 		}
 	}
 ?>

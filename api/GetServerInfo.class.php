@@ -2,12 +2,12 @@
  	require_once 'ApiFunction.class.php';
 
 	/**
-	 *Returns server information such as version, flavor, and gmt_time.
+	 * Returns server information such as version, flavor, and gmt_time.
 	 *
-	 *@author Yousef Guzaiz
-	 *@package api
+	 * @author Yousef Guzaiz
+	 * @package api
 	 */
-	class Api_GetServerInfo  extends Api_ApiFunction
+	class Api_GetServerInfo extends Api_ApiFunction
 	{
 		/**
 		 * Constructor

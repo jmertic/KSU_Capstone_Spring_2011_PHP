@@ -39,7 +39,7 @@
         }
         
         /**
-         * Set the Curl object
+         * Set the variables
          *
          * @param string $name
          * @param $value
@@ -457,6 +457,221 @@
             $merge->_camapaignId = $campaign_id;
             
             return $merge->execute();
+        }
+        
+        /**
+         * Creates or updates a SugarBean.
+         *
+         * @param string $module_name
+         * @param array $name_value_list;
+         * @return object
+         */
+        final public function set_entry($module_name = '', $name_value_list = array())
+        {
+        	require_once 'api/SetEntry.class.php';
+        	
+        	$entry = new Api_SetEntry();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$entry->_curl = $this->_curl;
+        	}
+        	
+        	$entry->_sessionId = $this->_sessionId;
+        	$entry->_moduleName = $module_name;
+        	$entry->_nameValueList = $name_value_list;
+        	
+        	return $entry->execute();
+        }
+        
+        /**
+         * Returns server information such as version, flavor, and gmt_time.
+         *
+         * @return object
+         */
+        final public function get_server_info()
+        {
+        	require_once 'api/GetServerInfo.class.php';
+        	
+        	$info = new Api_GetServerInfo();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$info->_curl = $this->_curl;
+        	}
+        	
+        	return $info->execute();
+        }
+        
+        /**
+         * Returns the ID of the user who is logged into the current session.
+         *
+         * @return object
+         */
+        final public function get_user_id()
+        {
+        	require_once 'api/GetUserId.class.php';
+        	
+        	$id = new Api_GetUserId();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$info->_curl = $this->_curl;
+        	}
+        	
+        	$id->_sessionId = $this->_sessionId;
+        	
+        	return $id->execute();
+        }
+        
+        /**
+         * Performs a seamless login during synchronization.
+         *
+         *@return object
+         */
+        final public function seamless_login()
+        {
+        	require_once 'api/SeamlessLogin.class.php';
+        	
+        	$login = new Api_SeamlessLogin();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$info->_curl = $this->_curl;
+        	}
+        	
+        	$login->_sessionId = $this->_sessionId;
+        	
+        	return $login->execute();
+        }
+        
+        /**
+         * Retrieves the ID of the default team of the user who is logged into the current session.
+         *
+         * @return object
+         */
+        final public function get_user_team_id()
+        {
+        	require_once 'api/GetUserTeamId.class.php';
+        	
+        	$id = new Api_GetUserTeamId();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$info->_curl = $this->_curl;
+        	}
+        	
+        	$id->_sessionId = $this->_sessionId;
+        	
+        	return $id->execute();
+        }
+        
+        /**
+         * Retrieves variable definitions (vardefs) for fields of the specified SugarBean.
+         *
+         * @param string $module_name
+         * @param array $fields
+         * @return object
+         */
+        final public function get_module_fields($module_name = '', $fields = array())
+        {
+        	require_once 'api/GetModuleFields.class.php';
+        	
+        	$modFields = new Api_GetModuleFields();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$modFields->_curl = $this->_curl;
+        	}
+        	
+        	$modFields->_sessionId = $this->_sessionId;
+        	$modFields->_moduleName = $module_name;
+        	$modFields->_fields = $fields;
+        	
+        	return $modFields->execute();
+        }
+        
+        /**
+         * Add or replace a note’s attachment. Optionally, you can set the relationship of this note to related modules using related_module_id and related_module_name.
+         *
+         * @param array $note
+         * @param string $filename
+         * @param binary $file
+         * @param string $related_module_id
+         * @param string $related_module_name
+         * @return object
+         */
+        final public function set_note_attachment($note = array(), $filename = '', $file, $related_module_id = '', $related_module_name = '')
+        {
+        	require_once 'api/SetNoteAttachment.class.php';
+        	
+        	$attachment = new Api_SetNoteAttachment();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$attachment->_curl = $this->_curl;
+        	}
+        	
+        	$attachment->_sessionId = $this->_sessionId;
+        	$attachment->_note = $note;
+        	$attachment->_filename = $filename;
+        	$attachment->_file = $file;
+        	$attachment->_related_module_id = $related_module_id;
+        	$attachment->_related_module_name = $related_module_name;
+        	
+        	return $attachment->execute();
+        }
+        
+        /**
+         * Retrieves an attachment from a note.
+         *
+         * @param string $id
+         * @return object
+         */
+        final public function get_note_attachment($id = '')
+        {
+        	require_once 'api/GetNoteAttachment.class.php';
+        	
+        	$attachment = new Api_GetNoteAttachment();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$attachment->_curl = $this->_curl;
+        	}
+        	
+        	$attachment->_sessionId = $this->_sessionId;
+        	$attachment->_id = $id;
+        	
+        	return $attachment->execute();
+        }
+        
+        /**
+         * Sets a single relationship between two SugarBeans.
+         * 
+         * @param string $module_name
+         * @param string $module_id
+         * @param string $link_field_name
+         * @param array $related_ids
+         * @return object
+         */
+        final public function set_relationship($module_name = '', $module_id = '', $link_field_name = '', $related_ids = array())
+        {
+        	require_once 'api/SetRelationship.class.php';
+        	
+        	$relationship = new Api_SetRelationship();
+        	
+        	if($this->_isCurlSet())
+        	{
+        		$relationship->_curl = $this->_curl;
+        	}
+        	
+        	$relationship->_sessionId = $this->_sessionId;
+        	$relationship->_moduleName = $module_name;
+        	$relationship->_moduleId = $module_id;
+        	$relationship->_linkFieldName = $link_field_name;
+        	$relationship->_relatedIds = $related_ids;
+        	
+        	return $relationship->execute();
         }
     }
 ?>

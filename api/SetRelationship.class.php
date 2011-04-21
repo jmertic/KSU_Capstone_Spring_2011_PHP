@@ -1,18 +1,51 @@
 <?php
     require_once 'ApiFunction.class.php';
-    
+
+	/**
+	 * Sets a single relationship between two SugarBeans.
+	 *
+	 * @author
+	 * @package api
+	 */    
     class Api_SetRelationship extends Api_ApiFunction
     {
+    	/**
+    	 * Session ID
+    	 *
+    	 * @var string
+    	 */
         private $_sessionId;
         
+        /**
+         * Module Name
+         *
+         * @var string
+         */
         private $_moduleName;
         
+        /**
+         * Module ID
+         *
+         * @var string
+         */
         private $_moduleId;
         
+        /**
+         * Link Field Name
+         *
+         * @var string
         private $_linkFieldName;
         
+        /**
+         * Related IDs
+         *
+         * @var array
+         */
         private $_relatedIds = array();
         
+        /**
+         * Constructor
+         */
         public function __construct()
         {
             parent::__construct();
@@ -29,6 +62,11 @@
             $this->$name = $value;
         }
         
+        /**
+         * Builds the parameter array
+         *
+         * @return array
+         */
         protected function _buildParameters()
         {
             return array(

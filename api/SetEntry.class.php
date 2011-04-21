@@ -1,14 +1,38 @@
 <?php
     require_once 'ApiFunction.class.php';
-    
+
+	/**
+	 * Creates or updates a SugarBean.
+	 *
+	 * @author
+	 * @package api
+	 */
     class Api_SetEntry extends Api_ApiFunction
     {
+    	/**
+    	 * Session ID
+    	 *
+    	 * @var string
+    	 */
         private $_sessionId;
         
+        /**
+         * Module Name
+         *
+         * @var string
+         */
         private $_moduleName;
         
-        private $_nameValueList;
+        /**
+         * Name Value List
+         *
+         * @var array
+         */
+        private $_nameValueList = array();
         
+        /**
+         * Constructor
+         */
         public function __construct()
         {
             parent::__construct();
@@ -25,6 +49,11 @@
             $this->$name = $value;
         }
         
+        /**
+         * Builds the parameter array
+         *
+         * @return $parameters
+         */
         protected function buildParameters()
         {
             return array(

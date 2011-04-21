@@ -1,6 +1,12 @@
 <?php
     require_once 'ApiFunction.class.php';
 
+	/**
+	 * Retrieves an attachment from a note.
+	 *
+	 * @author
+	 * @package api
+	 */
 	class Api_GetNoteAttachment extends Api_ApiFunction
 	{
 		/**
@@ -39,7 +45,7 @@
 		/**
 		 * Builds the parameter array
 		 *
-		 * @return $parameters
+		 * @return array
 		 */
 		protected function buildParameters()
 		{
