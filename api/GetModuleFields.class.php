@@ -72,7 +72,7 @@
                 $parameters['fields'] = $this->_fields;
             }
             
-            return $parameters
+            return $parameters;
         }
     }
 ?>
