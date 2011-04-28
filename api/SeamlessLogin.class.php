@@ -38,6 +38,8 @@
 		 * Builds the parameter array
 		 *
 		 * @return array
+                 */
+
 		protected function buildParameters()
 		{
 			if (empty($this->_sessionId)) {
