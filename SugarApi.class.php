@@ -132,7 +132,7 @@
             $entry_list->_offset = $offset;
             $entry_list->_selectFields = $select_fields;
             $entry_list->_linkNameToFieldsArray = $link_name_to_fields_array;
-       
+            
             return $entry_list->execute();
         }
 
@@ -672,6 +672,33 @@
         	$relationship->_relatedIds = $related_ids;
         	
         	return $relationship->execute();
+        }
+        
+        /**
+         * Return a user object with a given username
+         * 
+         * @param string $username
+         * @return object
+         */
+        final public function findUserByUserName($username)
+        {
+        	$result = $this->get_entry_list('Users','users.user_name = "'.$username.'"');
+        	
+        	return $result;
+        }
+        
+        /**
+         * Add a given contact to a given account
+         * 
+         * @param string $contact_id
+         * @param string $account_id
+         * @return bool
+         */
+        final public function addContactToAccount($contact_id, $account_id)
+        {
+        	$this->set_relationship('Accounts',$account_id,'contacts',array($contact_id));
+        	
+        	return true;
         }
     }
 ?>
