@@ -743,9 +743,9 @@
                  * @param string $last_name
                  * @return object
                  */
-                final public function findAccountByName($last_name)
+                final public function findAccountByName($name)
         {
-                $result = $this->get_entry_list('Accounts','accounts.last_name = "'.$last_name.'"');
+                $result = $this->get_entry_list('Accounts','accounts.name = "'.$name.'"');
  
                 return $result;
         }
