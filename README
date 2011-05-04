@@ -1,1 +1,14 @@
 PHP API for the SugarCRM Web Services API
+
+== Introduction
+We are working in a group of 5 members in order to design, implement, and demonstrate a user friendly API for an open source web services API. The API that we will be working with is SugarCRM API. As part of the development of this project we will work under the guidance of a representative, John Mertic, of the SugarCRM company. The project development procedures will be similar to those used by that company.
+
+
+-download the files from:
+https://github.com/jmertic/KSU_Capstone_Spring_2011_PHP/zipball/master
+
+-Extract to folder in your root directory
+
+-Follow code examples below 
+
+
