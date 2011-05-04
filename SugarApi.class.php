@@ -736,5 +736,34 @@
     		
     		return $contact;
     	}
+
+        /**
+                 * Find an Account by name
+                 *
+                 * @param string $last_name
+                 * @return object
+                 */
+                final public function findAccountByName($last_name)
+        {
+                $result = $this->get_entry_list('Accounts','accounts.last_name = "'.$last_name.'"');
+ 
+                return $result;
+        }
+
+
+               /**
+               * Return an Account object with a given username
+               *
+               * @param string $username
+               * @return object
+               */
+               final public function findAccountByUserNam($username)
+        {
+                $result = $this->get_entry_list('Accounts','accounts.user_name = "'.$username.'"');
+ 
+                return $result;
+        }
+
+
     }
 ?>
