@@ -42,3 +42,22 @@ https://github.com/jmertic/KSU_Capstone_Spring_2011_PHP/zipball/master
 For more examples, go to this link: https://github.com/jmertic/KSU_Capstone_Spring_2011_PHP/tree/master/examples
 
 To change the connection info at run-time, see below:
+<?php
+    // Include the wrapper class and SugarCurlRequest class
+    require_once 'SugarApi.class.php';
+    require_once 'curl/SugarCurlRequest.class.php';
+
+    // Instantiate the wrapper class and curl object
+    $sugar = new SugarApi();
+    $curlR = new Curl_SugarCurlRequest();
+
+    // Set the host and Api version
+    $curlR->setHost('');
+    $curlR->setApiVersion(2);
+
+    // Set the curl object in the wrapper class
+    $sugar->_curl = $curlR;
+
+    // Log in with username and password
+    $user_id = $sugar->login('<user_name>', '<password>');
+?>
