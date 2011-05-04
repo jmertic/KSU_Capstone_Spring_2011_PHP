@@ -1,14 +1,44 @@
 PHP API for the SugarCRM Web Services API
 
-== Introduction
+Introduction:
 We are working in a group of 5 members in order to design, implement, and demonstrate a user friendly API for an open source web services API. The API that we will be working with is SugarCRM API. As part of the development of this project we will work under the guidance of a representative, John Mertic, of the SugarCRM company. The project development procedures will be similar to those used by that company.
 
 
--download the files from:
+- download the files from:
 https://github.com/jmertic/KSU_Capstone_Spring_2011_PHP/zipball/master
 
--Extract to folder in your root directory
+- Extract to folder in your root directory
 
--Follow code examples below 
+- To change the default configuration, edit the Config.class.php file in the root of this project.
 
+- Follow code examples below 
 
+<?php
+    // Include the wrapper class
+    require_once 'SugarApi.class.php';
+    
+    // Instantiate the wrapper class
+    $sugar = new SugarApi();
+    
+    // Log in using the default configuration data
+    $session_id = $sugar->login();
+    
+    // Get the user object of the user with the specified username
+    $result = $sugar->findUserByUserName('');
+    print_r($result);
+    
+    // Get the contact object with the given last name
+    $result = $sugar->findContactByLastName('');
+    print_r($result);
+    
+    // Get the account object with the given last name
+    $result = $sugar->findAccountByName('');
+    print_r($result);
+    
+    // Logout after you're done
+    $sugar->logout();
+?>
+
+For more examples, go to this link: https://github.com/jmertic/KSU_Capstone_Spring_2011_PHP/tree/master/examples
+
+To change the connection info at run-time, see below:
