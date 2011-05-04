@@ -39,6 +39,16 @@
         }
         
         /**
+         * Set the Curl object
+         *
+         * @param object $curl
+         */
+        public function setCurlObject($curl)
+        {
+            $this->_curl = $curl;
+        }
+        
+        /**
          * Set the variables
          *
          * @param string $name
@@ -48,7 +58,7 @@
         {
             $this->$name = $value;
         }
-                                                                                                        
+                                                                                               
         /**
          * Log in to the system
          *
@@ -64,7 +74,7 @@
             
             if($this->_isCurlSet())
             {
-                $login->_curl = $this->_curl;
+                $login->setCurlObject($this->_curl);
             }
 
             if (!empty($username))
@@ -95,7 +105,7 @@
         
             if($this->_isCurlSet())
             {
-                $logout->_curl = $this->_curl;
+                $logout->setCurlObject($this->_curl);
             }
 
             $logout->_sessionId = $this->_sessionId;
@@ -122,7 +132,7 @@
 
             if($this->_isCurlSet())
             {
-                $entry_list->_curl = $this->_curl;
+                $entry_list->setCurlObject($this->_curl);
             }
 
             $entry_list->_sessionId = $this->_sessionId;
@@ -153,7 +163,7 @@
 
             if($this->_isCurlSet())
             {
-                $entry->_curl = $this->_curl;
+                $entry->setCurlObject($this->_curl);
             }
 
             $entry->_sessionId = $this->_sessionId;
@@ -182,7 +192,7 @@
 
             if($this->_isCurlSet())
             {
-                $entries->_curl = $this->_curl;
+                $entries->setCurlObject($this->_curl);
             }
 
             $entries->_sessionId = $this->_sessionId;
@@ -211,7 +221,7 @@
 
             if($this->_isCurlSet())
             {
-                $module->_curl = $this->_curl;
+                $module->setCurlObject($this->_curl);
             }
 
             $module->_sessionId = $this->_sessionId;
@@ -238,7 +248,7 @@
 
             if($this->_isCurlSet())
             {
-                $document->_curl = $this->_curl;
+                $document->setCurlObject($this->_curl);
             }
 
             $document->_sessionId = $this->_sessionId;
@@ -263,7 +273,7 @@
 
             if($this->_isCurlSet())
             {
-                $document->_curl = $this->_curl;
+                $document->setCurlObject($this->_curl);
             }
 
             $document->_sessionId = $this->_sessionId;
@@ -288,7 +298,7 @@
 
             if($this->_isCurlSet())
             {
-                $entries_count->_curl = $this->_curl;
+                $entries_count->setCurlObject($this->_curl);
             }
 
             $entries_count->_sessionId = $this->_sessionId;
@@ -316,7 +326,7 @@
 
             if($this->_isCurlSet())
             {
-                $set_relationships->_curl = $this->_curl;
+                $set_relationships->setCurlObject($this->_curl);
             }
 
             $set_relationships->_sessionId = $this->_sessionId;
@@ -343,7 +353,7 @@
 
             if($this->_isCurlSet())
             {
-                $set_entries->_curl = $this->_curl;
+                $set_entries->setCurlObject($this->_curl);
             }
 
             $set_entries->_sessionId = $this->_sessionId;
@@ -373,7 +383,7 @@
 
             if($this->_isCurlSet())
             {
-                $get_relationships->_curl = $this->_curl;
+                $get_relationships->setCurlObject($this->_curl);
             }
 
             $get_relationships->_sessionId = $this->_sessionId;
@@ -401,7 +411,7 @@
 
             if($this->_isCurlSet())
             {
-                $modules->_curl = $this->_curl;
+                $modules->setCurlObject($this->_curl);
             }
 
             $modules->_sessionId = $this->_sessionId;
@@ -424,7 +434,7 @@
 
             if($this->_isCurlSet())
             {
-                $entries->_curl = $this->_curl;
+                $entries->setCurlObject($this->_curl);
             }
 
             $entries->_sessionId = $this->_sessionId;
@@ -449,7 +459,7 @@
 
             if($this->_isCurlSet())
             {
-                $merge->_curl = $this->_curl;
+                $merge->setCurlObject($this->_curl);
             }
 
             $merge->_sessionId = $this->_sessionId;
@@ -474,7 +484,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$entry->_curl = $this->_curl;
+        		$entry->setCurlObject($this->_curl);
         	}
         	
         	$entry->_sessionId = $this->_sessionId;
@@ -497,7 +507,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->_curl = $this->_curl;
+        		$info->setCurlObject($this->_curl);
         	}
         	
         	return $info->execute();
@@ -516,7 +526,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->_curl = $this->_curl;
+        		$info->setCurlObject($this->_curl);
         	}
         	
         	$id->_sessionId = $this->_sessionId;
@@ -537,7 +547,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->_curl = $this->_curl;
+        		$info->setCurlObject($this->_curl);
         	}
         	
         	$login->_sessionId = $this->_sessionId;
@@ -558,7 +568,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->_curl = $this->_curl;
+        		$info->setCurlObject($this->_curl);
         	}
         	
         	$id->_sessionId = $this->_sessionId;
@@ -581,7 +591,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$modFields->_curl = $this->_curl;
+        		$modFields->setCurlObject($this->_curl);
         	}
         	
         	$modFields->_sessionId = $this->_sessionId;
@@ -609,7 +619,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$attachment->_curl = $this->_curl;
+        		$attachment->setCurlObject($this->_curl);
         	}
         	
         	$attachment->_sessionId = $this->_sessionId;
@@ -636,7 +646,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$attachment->_curl = $this->_curl;
+        		$attachment->setCurlObject($this->_curl);
         	}
         	
         	$attachment->_sessionId = $this->_sessionId;
@@ -662,7 +672,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$relationship->_curl = $this->_curl;
+        		$relationship->setCurlObject($this->_curl);
         	}
         	
         	$relationship->_sessionId = $this->_sessionId;
@@ -700,5 +710,31 @@
         	
         	return true;
         }
+        
+        /**
+         * Get account emails given account ID
+         *
+         * @param string $account
+         * @return array
+         */
+        final public function getAccountEmails($account)
+		{
+            $emails = $this->get_entry_list('Accounts', 'accounts.name = "'.$account.'"', '', '', email_address);
+            
+            return $emails;
+		}
+		
+		/**
+		 * Find a contact by name
+		 *
+		 * @param string $last_name
+		 * @return object
+		 */
+		final public function findContactByLastName($last_name)
+    	{   
+    		$contact = $this->get_entry_list('Contacts','contacts.last_name = "'.$last_name.'"');
+    		
+    		return $contact;
+    	}
     }
 ?>
