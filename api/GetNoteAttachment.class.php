@@ -4,7 +4,7 @@
 	/**
 	 * Retrieves an attachment from a note.
 	 *
-	 * @author
+	 * @author Yousef Guzaiz
 	 * @package api
 	 */
 	class Api_GetNoteAttachment extends Api_ApiFunction
