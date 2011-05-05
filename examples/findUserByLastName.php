@@ -10,7 +10,7 @@
     // Set the host, Api version, and curl object
     $curlR->setHost("ruttanvm.cs.kent.edu:4080");
     $curlR->setApiVersion(2);
-    $sugar->_curl = $curlR;
+    $sugar->setCurlObject($curlR);
 
     // Log in with username and password
     $user_id = $sugar->login('class', 'class123');
