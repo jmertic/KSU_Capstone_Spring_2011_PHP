@@ -526,7 +526,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->setCurlObject($this->_curl);
+        		$id->setCurlObject($this->_curl);
         	}
         	
         	$id->_sessionId = $this->_sessionId;
@@ -547,7 +547,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->setCurlObject($this->_curl);
+        		$login->setCurlObject($this->_curl);
         	}
         	
         	$login->_sessionId = $this->_sessionId;
@@ -568,7 +568,7 @@
         	
         	if($this->_isCurlSet())
         	{
-        		$info->setCurlObject($this->_curl);
+        		$id->setCurlObject($this->_curl);
         	}
         	
         	$id->_sessionId = $this->_sessionId;
