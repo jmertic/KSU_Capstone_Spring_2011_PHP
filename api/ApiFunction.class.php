@@ -13,7 +13,7 @@
          * @var object
          */
         private $_curl;
-
+        
         /**
          * Constructor
          */
@@ -22,16 +22,16 @@
             // Do nothing
         }
         
-		/**
-		 * Set the variables
-		 *
-		 * @param string $name
-		 * @param $value
-		 */
-		public function __set($name, $value)
-		{
-			$this->$name = $value;
-       	}
+        /**
+         * Set the variables
+         *
+         * @param string $name
+         * @param $value
+         */
+        public function __set($name, $value)
+        {
+            $this->$name = $value;
+           }
         
         /**
          * Execute the function with the specified parameters
@@ -47,7 +47,7 @@
             }
             
             // Build the parameter array using the overridden method in each child class
-        	$parameters = $this->buildParameters();
+            $parameters = $this->buildParameters();
             
             if (empty($parameters)) {
                 throw new Exception('Parameter array empty');
@@ -86,7 +86,7 @@
             $result = self::_decode($response);
             
             // Check the result for errors
-			self::errorCheck($result);
+            self::errorCheck($result);
             
             // If all is working correctly, return the data transfer object
             return $result;
@@ -160,77 +160,77 @@
          */
         private static function _buildApiFunctionName($class_name)
         {
-        	$result = $class_name;
-        	
-        	// The name may or may not have underscores in it separating the package(s) and actual class name
-        	$result = explode('_',$result);
-        	
-        	// The class name will be at the end of any string with underscores
-        	$result = end($result);
-        	
-        	// Each word is denoted by a capital letter.
-        	// Add an underscore before each word.
-        	$result = preg_replace('/([A-Z])/','_$0',$result);
-        	
-        	// Make everything lowercase
-        	$result = strtolower($result);
-        	
-        	// Remove the first underscore
-        	$result = substr($result,1);
-        	
-        	// Return the finished API function name
-        	return $result;
+            $result = $class_name;
+            
+            // The name may or may not have underscores in it separating the package(s) and actual class name
+            $result = explode('_',$result);
+            
+            // The class name will be at the end of any string with underscores
+            $result = end($result);
+            
+            // Each word is denoted by a capital letter.
+            // Add an underscore before each word.
+            $result = preg_replace('/([A-Z])/','_$0',$result);
+            
+            // Make everything lowercase
+            $result = strtolower($result);
+            
+            // Remove the first underscore
+            $result = substr($result,1);
+            
+            // Return the finished API function name
+            return $result;
         }
-		
-		/**
-		 * Checks the cURL result for errors
-		 *
-		 * @param string $result
-		 */
+        
+        /**
+         * Checks the cURL result for errors
+         *
+         * @param string $result
+         */
         protected static function errorCheck($result)
         {
-        	// Do nothing
+            // Do nothing
         }
         
         /**
-		 * Is the result empty?
-		 *
-		 * @param mixed $result
-		 */
+         * Is the result empty?
+         *
+         * @param mixed $result
+         */
         final protected static function isEmpty($result)
         {
-        	if(empty($result)) {
-         		throw new Exception('Result is empty.');
-         	}
+            if(empty($result)) {
+                 throw new Exception('Result is empty.');
+             }
         }
         
         /**
-		 * Is the result an object?
-		 *
-		 * @param mixed $result
-		 */
+         * Is the result an object?
+         *
+         * @param mixed $result
+         */
         final protected static function isObject($result)
         {
-        	if (!is_object($result)) {
-            	throw new Exception('Result is not an object');
+            if (!is_object($result)) {
+                throw new Exception('Result is not an object');
             }
         }
         
         /**
-		 * Does the specified object have the specified property?
-		 *
-		 * @param object $result
-		 * @param string $field_name
-		 * @return bool
-		 */
+         * Does the specified object have the specified property?
+         *
+         * @param object $result
+         * @param string $field_name
+         * @return bool
+         */
         final protected static function keyFieldSet($result,$field_name)
         {
-        	if(property_exists($result,$field_name)) {
-         		return TRUE;
-         	}
-         	else {
-         		return FALSE;
-         	}
+            if(property_exists($result,$field_name)) {
+                 return TRUE;
+             }
+             else {
+                 return FALSE;
+             }
         }
     }
 ?>
